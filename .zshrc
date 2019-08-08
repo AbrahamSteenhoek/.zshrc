@@ -43,7 +43,8 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
 	# set the prompt with color
 	#PS1='[%n@%m:%c]%# '
     right_arrow=\u2192
-    PS1=$'%B%F{green}%n@%F{green}%m%F{gray} \u21A0 %b'
+    arrow=\u21A0
+    PS1=$'%B%F{green}%n@%F{green}%m%F{gray} > %b'
 	#PS1='%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m %{$fg_bold[blue]%}%(!.%1~.%~) $(git_prompt_info)$(prompt_char)%{$reset_color%} '
 	RPS1='%B%F{blue}%~'
 	# PS2="%8%{${fg[green]}%}%n@%n%{$fg[white]}%}> "
@@ -51,14 +52,19 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
 fi
 
 # aliases for convenience
-alias cmake-configure="cmake-configure --gold"
+alias ll="ls -l"
 alias cdp="cd ~/projects"
 alias c="clear"
-#alias m="mcp"
-#alias p="projects"
-
+alias buildmcp="cd ~/projects/mcp/Mcp/Application/builds/host-debug;ninja;cd -"
+alias sqide.py=squide.py
+# alias armstrip='/opt/nxt/sdk/latest/nitrogen6x/sysroots/x86_64-agleader-linux/usr/bin/arm-agleader-linux-gnueabi/arm-agleader-linux-gnueabi-strip'
+alias arm-strip='/opt/nxt/sdk/latest/nxt/sysroots/x86_64-agleader-linux/usr/bin/arm-agleader-linux-gnueabi/arm-agleader-linux-gnueabi-strip'
+alias gitg='git log --graph --oneline --decorate --all'
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+
+export VISUAL=vim
+export EDITOR="$VISUAL":
 
 source ~/.myenv
 . /home/ajsteenhoek/z.sh
